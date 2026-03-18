@@ -47,6 +47,16 @@ Load only the minimal necessary context from each artifact:
 - Non-Functional Requirements
 - User Stories
 - Edge Cases (if present)
+- Invariants (INV-### entries)
+- System Behaviors (SB-### entries)
+- Entity Lifecycles (state tables)
+- Glossary Additions
+
+**From additional plan artifacts (if they exist):**
+- security.md: Security requirements
+- events.md: Domain event contracts
+- observability.md: SLI/SLO definitions, alert conditions
+- deployment.md: Infrastructure requirements
 
 **From plan.md:**
 
@@ -75,6 +85,10 @@ Create internal representations (do not include raw artifacts in output):
 - **User story/action inventory**: Discrete user actions with acceptance criteria
 - **Task coverage mapping**: Map each task to one or more requirements or stories (inference by keyword / explicit reference patterns like IDs or key phrases)
 - **Constitution rule set**: Extract principle names and MUST/SHOULD normative statements
+- **Invariant inventory**: Extract INV-### entries from spec, map to task coverage
+- **Lifecycle inventory**: Extract entity state machines from spec, map to task coverage
+- **System behavior inventory**: Extract SB-### entries from spec, map to task coverage
+- **Glossary terms**: Load from `.specify/memory/glossary.md` and spec's Glossary Additions section
 
 ### 4. Detection Passes (Token-Efficient Analysis)
 
@@ -113,6 +127,37 @@ Focus on high-signal findings. Limit to 50 findings total; aggregate remainder i
 - Data entities referenced in plan but absent in spec (or vice versa)
 - Task ordering contradictions (e.g., integration tasks before foundational setup tasks without dependency note)
 - Conflicting requirements (e.g., one requires Next.js while other specifies Vue)
+
+#### G. Invariant Coverage
+
+- Are all invariants from spec.md reflected in tasks (validation logic, DB constraints, tests)?
+- Are invariant scopes (which operations are constrained) covered by task file paths?
+
+#### H. Lifecycle Coverage
+
+- Are all entity state transitions from spec.md implemented with guard conditions in tasks?
+- Are terminal states handled (no further transitions possible)?
+
+#### I. System Behavior Coverage
+
+- Are all reactive behaviors from spec.md mapped to tasks?
+- Are trigger mechanisms (scheduled jobs, webhooks, event handlers) present in tasks?
+
+#### J. Glossary Consistency
+
+- Are the same canonical terms used across spec.md, plan.md, and tasks.md?
+- Cross-reference against `.specify/memory/glossary.md` if it exists
+- Flag any term used in tasks that differs from the spec's glossary
+
+#### K. Security Coverage
+
+- If `security.md` exists in the feature directory, are its requirements reflected in tasks?
+- Are auth, data classification, and threat mitigations covered?
+
+#### L. Contract Completeness
+
+- If `contracts/` has endpoints, do they all have: auth requirements, error responses, and examples?
+- Are all spec functional requirements mapped to at least one contract endpoint?
 
 ### 5. Severity Assignment
 
