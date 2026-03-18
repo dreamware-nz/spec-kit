@@ -5,6 +5,17 @@
 **Status**: Draft  
 **Input**: User description: "$ARGUMENTS"
 
+## Overview *(mandatory)*
+
+<!--
+  A concise summary of what is being built and why.
+  What problem does this solve? Who is it for? What is the core value proposition?
+  A reader should understand the purpose and scope of this feature after reading this section.
+  Keep it to 2-4 sentences. Technology-agnostic.
+-->
+
+[Overview of the feature — problem, audience, value proposition]
+
 ## User Scenarios & Testing *(mandatory)*
 
 <!--
