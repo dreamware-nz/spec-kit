@@ -54,6 +54,12 @@ Given that feature description, do this:
 
 3. Load `templates/spec-template.md` to understand required sections.
 
+3b. **Glossary check**:
+   1. Read `.specify/memory/glossary.md` if it exists. If missing, create it from `templates/glossary-template.md` (empty table with headers only).
+   2. Extract domain nouns from the feature description.
+   3. Cross-reference against the glossary. Any nouns not found become candidates for the `## Glossary Additions` section in the spec.
+   4. When writing the spec (step 5), populate `## Glossary Additions` with candidate terms and proposed definitions. If no new terms, remove the section entirely.
+
 4. Follow this execution flow:
 
     1. Parse user description from Input
@@ -78,7 +84,23 @@ Given that feature description, do this:
        Include both quantitative metrics (time, performance, volume) and qualitative measures (user satisfaction, task completion)
        Each criterion must be verifiable without implementation details
     7. Identify Key Entities (if data involved)
-    8. Return: SUCCESS (spec ready for planning)
+    8. Identify System Behaviors (if applicable)
+       Scan for: side effects, time-triggered actions, external reactions, threshold breaches
+       If found: populate ## System Behaviors with SB-### entries
+       If none: remove ## System Behaviors section entirely
+    9. Identify Invariants (if applicable)
+       Scan for: numeric constraints, cardinality limits, derived value rules, cross-cutting business rules
+       If found: populate ## Invariants with INV-### entries
+       If none: remove ## Invariants section entirely
+   10. Identify Entity Lifecycles (if applicable)
+       Scan for: entities with status/state fields, approval flows, multi-step processes
+       If found: populate ## Entity Lifecycles with state tables
+       If none: remove ## Entity Lifecycles section entirely
+   11. Identify Design Language (if UI detected)
+       Scan for: pages, screens, dashboards, forms, interactive elements
+       If found: populate ## Design Language subsections
+       If none: remove ## Design Language section entirely
+   12. Return: SUCCESS (spec ready for planning)
 
 5. Write the specification to SPEC_FILE using the template structure, replacing placeholders with concrete details derived from the feature description (arguments) while preserving section order and headings.
 
@@ -99,7 +121,9 @@ Given that feature description, do this:
       - [ ] Focused on user value and business needs
       - [ ] Written for non-technical stakeholders
       - [ ] All mandatory sections completed
-      
+      - [ ] Glossary terms consistent with project glossary (if `.specify/memory/glossary.md` exists)
+      - [ ] New domain terms captured in Glossary Additions section
+
       ## Requirement Completeness
       
       - [ ] No [NEEDS CLARIFICATION] markers remain
@@ -117,7 +141,11 @@ Given that feature description, do this:
       - [ ] User scenarios cover primary flows
       - [ ] Feature meets measurable outcomes defined in Success Criteria
       - [ ] No implementation details leak into specification
-      
+      - [ ] System behaviors identified (or section removed as not applicable)
+      - [ ] Invariants identified (or section removed as not applicable)
+      - [ ] Entity lifecycles defined for stateful entities (or section removed as not applicable)
+      - [ ] Design language defined for UI features (or section removed as not applicable)
+
       ## Notes
       
       - Items marked incomplete require spec updates before `/speckit.clarify` or `/speckit.plan`
