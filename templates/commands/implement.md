@@ -89,6 +89,10 @@ You **MUST** consider the user input before proceeding (if not empty).
    - **IF EXISTS**: Read contracts/ for API specifications and test requirements
    - **IF EXISTS**: Read research.md for technical decisions and constraints
    - **IF EXISTS**: Read quickstart.md for integration scenarios
+   - **IF EXISTS**: Read security.md for authentication, authorization, and data classification requirements
+   - **IF EXISTS**: Read events.md for domain event contracts and saga patterns
+   - **IF EXISTS**: Read observability.md for logging strategy, SLI targets, and alert definitions
+   - **IF EXISTS**: Read deployment.md for infrastructure requirements and CI/CD pipeline expectations
 
 4. **Project Setup Verification**:
    - **REQUIRED**: Create/verify ignore files based on actual project setup:
