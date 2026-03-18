@@ -62,7 +62,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 2. **Load design documents**: Read from FEATURE_DIR:
    - **Required**: plan.md (tech stack, libraries, structure), spec.md (user stories with priorities)
-   - **Optional**: data-model.md (entities), contracts/ (interface contracts), research.md (decisions), quickstart.md (test scenarios)
+   - **Optional**: data-model.md (entities), contracts/ (interface contracts), research.md (decisions), quickstart.md (test scenarios), security.md (security model), events.md (domain events), observability.md (SLIs/logging), deployment.md (infrastructure)
    - Note: Not all projects have all documents. Generate tasks based on what's available.
 
 3. **Execute task generation workflow**:
@@ -192,6 +192,42 @@ Every task MUST strictly follow this format:
    - Shared infrastructure → Setup phase (Phase 1)
    - Foundational/blocking tasks → Foundational phase (Phase 2)
    - Story-specific setup → within that story's phase
+
+5. **From Invariants (spec.md)**:
+   - Each invariant (INV-###) → validation task(s) in the appropriate user story phase
+   - Invariants that span multiple stories → Foundational phase (Phase 2)
+   - Include: input validation, database constraints, test for violation behavior
+
+6. **From Entity Lifecycles (spec.md)**:
+   - Each state transition → guard implementation task in the appropriate user story phase
+   - State machine setup (enum/model definition) → Foundational phase if shared
+   - Include: transition validation, invalid transition rejection, terminal state enforcement
+
+7. **From System Behaviors (spec.md)**:
+   - Each system behavior (SB-###) → implementation task(s)
+   - Time-triggered behaviors → scheduled job/cron task
+   - Event reactions → event handler/webhook task
+   - Map to user story phase if story-specific, or Polish phase if cross-cutting
+
+8. **From Security Model (security.md, if exists)**:
+   - Auth setup → Foundational phase
+   - Per-endpoint auth → within relevant user story phase
+   - Data classification handling → Foundational phase
+
+9. **From Domain Events (events.md, if exists)**:
+   - Event publishing → within relevant user story phase
+   - Event consumption → within relevant user story or Integration phase
+   - Saga/choreography → dedicated tasks with clear compensation steps
+
+10. **From Observability (observability.md, if exists)**:
+    - Logging/metrics setup → Foundational phase
+    - Per-feature instrumentation → within relevant user story phase
+    - Alert configuration → Polish phase
+
+11. **From Deployment (deployment.md, if exists)**:
+    - Infrastructure setup → Setup phase or Foundational phase
+    - CI/CD pipeline → Polish phase
+    - Migration scripts → Foundational phase
 
 ### Phase Structure
 
