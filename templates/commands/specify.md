@@ -54,13 +54,14 @@ Given that feature description, do this:
 
 3. Load `templates/spec-template.md` to understand required sections.
 
-3b. **Glossary check**:
+4. **Glossary check**:
+
    1. Read `.specify/memory/glossary.md` if it exists. If missing, create it from `templates/glossary-template.md` (empty table with headers only).
    2. Extract domain nouns from the feature description.
    3. Cross-reference against the glossary. Any nouns not found become candidates for the `## Glossary Additions` section in the spec.
-   4. When writing the spec (step 5), populate `## Glossary Additions` with candidate terms and proposed definitions. If no new terms, remove the section entirely.
+   4. When writing the spec (step 6), populate `## Glossary Additions` with candidate terms and proposed definitions. If no new terms, remove the section entirely.
 
-4. Follow this execution flow:
+5. Follow this execution flow:
 
     1. Parse user description from Input
        If empty: ERROR "No feature description provided"
@@ -102,9 +103,9 @@ Given that feature description, do this:
        If none: remove ## Design Language section entirely
    12. Return: SUCCESS (spec ready for planning)
 
-5. Write the specification to SPEC_FILE using the template structure, replacing placeholders with concrete details derived from the feature description (arguments) while preserving section order and headings.
+6. Write the specification to SPEC_FILE using the template structure, replacing placeholders with concrete details derived from the feature description (arguments) while preserving section order and headings.
 
-6. **Specification Quality Validation**: After writing the initial spec, validate it against quality criteria:
+7. **Specification Quality Validation**: After writing the initial spec, validate it against quality criteria:
 
    a. **Create Spec Quality Checklist**: Generate a checklist file at `FEATURE_DIR/checklists/requirements.md` using the checklist template structure with these validation items:
 
@@ -157,7 +158,7 @@ Given that feature description, do this:
 
    c. **Handle Validation Results**:
 
-      - **If all items pass**: Mark checklist complete and proceed to step 7
+      - **If all items pass**: Mark checklist complete and proceed to step 8
 
       - **If items fail (excluding [NEEDS CLARIFICATION])**:
         1. List the failing items and specific issues
@@ -202,7 +203,7 @@ Given that feature description, do this:
 
    d. **Update Checklist**: After each validation iteration, update the checklist file with current pass/fail status
 
-7. Report completion with branch name, spec file path, checklist results, and readiness for the next phase (`/speckit.clarify` or `/speckit.plan`).
+8. Report completion with branch name, spec file path, checklist results, and readiness for the next phase (`/speckit.clarify` or `/speckit.plan`).
 
 **NOTE:** The script creates and checks out the new branch and initializes the spec file before writing.
 

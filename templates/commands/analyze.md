@@ -53,6 +53,7 @@ Load only the minimal necessary context from each artifact:
 - Glossary Additions
 
 **From additional plan artifacts (if they exist):**
+
 - security.md: Security requirements
 - events.md: Domain event contracts
 - observability.md: SLI/SLO definitions, alert conditions

@@ -269,6 +269,7 @@ Sample items:
 **Invariants Requirements Quality:** `invariants.md`
 
 Sample items:
+
 - "Are all invariant scope boundaries explicitly defined? [Completeness, Spec §INV-001]"
 - "Is the violation consequence specified for each invariant? [Completeness]"
 - "Are invariant enforcement layers identified (validation, DB constraint, test)? [Coverage, Gap]"
@@ -278,6 +279,7 @@ Sample items:
 **Events Requirements Quality:** `events.md`
 
 Sample items:
+
 - "Are delivery guarantees specified for each event type? [Completeness]"
 - "Are idempotency requirements defined for consumed events? [Coverage, Gap]"
 - "Are event payload schemas specified with field types? [Clarity]"
@@ -287,6 +289,7 @@ Sample items:
 **Observability Requirements Quality:** `observability.md`
 
 Sample items:
+
 - "Are SLO targets quantified with specific percentages/durations? [Clarity]"
 - "Are logging requirements defined for all error categories? [Coverage]"
 - "Is sensitive data redaction specified for log entries? [Completeness, Security]"
@@ -296,6 +299,7 @@ Sample items:
 **Deployment Requirements Quality:** `deployment.md`
 
 Sample items:
+
 - "Are environment topology requirements explicitly defined? [Completeness]"
 - "Are infrastructure sizing requirements quantified per component? [Clarity]"
 - "Are rollback criteria specified for each deployment stage? [Coverage, Gap]"
