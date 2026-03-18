@@ -19,6 +19,18 @@
 ## User Scenarios & Testing *(mandatory)*
 
 <!--
+  FEATURE SCOPE: A feature spec should cover ONE coherent concern — a set of user stories
+  that share the same domain context and can be developed, tested, and shipped together.
+
+  Signs that you need to SPLIT into separate feature specs:
+  - User stories address fundamentally different user goals (e.g., "sign in" vs "create a todo")
+  - Stories require different domain knowledge to implement
+  - Stories could be shipped independently without the others
+  - The spec is growing beyond what one developer could hold in their head
+
+  When in doubt, ask: "Could this user story exist in a separate feature branch
+  and still make sense?" If yes, it probably should.
+
   IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
   Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,
   you should still have a viable MVP (Minimum Viable Product) that delivers value.

@@ -237,6 +237,21 @@ When creating this spec from a user prompt:
    - User types and permissions (if multiple conflicting interpretations possible)
    - Security/compliance requirements (when legally/financially significant)
 
+### Feature Scoping
+
+When generating a spec from a user description, watch for signs that the description covers **multiple distinct features**. If detected:
+
+1. Identify the distinct concerns (e.g., "authentication", "todo management", "collaboration")
+2. Pick the most foundational concern as the current feature spec
+3. Note the other concerns and suggest they become separate feature specs
+4. Include a brief note in the spec: "Related features to spec separately: [list]"
+
+Signs of multiple features in one description:
+- User stories address fundamentally different user goals
+- Stories require different domain knowledge to implement
+- Stories could be shipped independently
+- Different user personas are involved in different stories
+
 **Examples of reasonable defaults** (don't ask about these):
 
 - Data retention: Industry-standard practices for the domain
