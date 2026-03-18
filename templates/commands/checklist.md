@@ -266,6 +266,42 @@ Sample items:
 - "Are security requirements consistent with compliance obligations? [Consistency]"
 - "Are security failure/breach response requirements defined? [Gap, Exception Flow]"
 
+**Invariants Requirements Quality:** `invariants.md`
+
+Sample items:
+- "Are all invariant scope boundaries explicitly defined? [Completeness, Spec §INV-001]"
+- "Is the violation consequence specified for each invariant? [Completeness]"
+- "Are invariant enforcement layers identified (validation, DB constraint, test)? [Coverage, Gap]"
+- "Do any invariants conflict with each other? [Consistency]"
+- "Are invariant boundary values quantified with specific limits? [Clarity]"
+
+**Events Requirements Quality:** `events.md`
+
+Sample items:
+- "Are delivery guarantees specified for each event type? [Completeness]"
+- "Are idempotency requirements defined for consumed events? [Coverage, Gap]"
+- "Are event payload schemas specified with field types? [Clarity]"
+- "Are saga compensation steps defined for all failure scenarios? [Coverage, Exception Flow]"
+- "Is event ordering documented for dependent event sequences? [Consistency]"
+
+**Observability Requirements Quality:** `observability.md`
+
+Sample items:
+- "Are SLO targets quantified with specific percentages/durations? [Clarity]"
+- "Are logging requirements defined for all error categories? [Coverage]"
+- "Is sensitive data redaction specified for log entries? [Completeness, Security]"
+- "Are alert escalation paths defined for each severity level? [Completeness]"
+- "Are distributed tracing boundaries defined for cross-service flows? [Coverage, Gap]"
+
+**Deployment Requirements Quality:** `deployment.md`
+
+Sample items:
+- "Are environment topology requirements explicitly defined? [Completeness]"
+- "Are infrastructure sizing requirements quantified per component? [Clarity]"
+- "Are rollback criteria specified for each deployment stage? [Coverage, Gap]"
+- "Is the CI/CD gate strategy defined between environments? [Completeness]"
+- "Are service dependency failure modes documented? [Coverage, Exception Flow]"
+
 ## Anti-Examples: What NOT To Do
 
 **❌ WRONG - These test implementation, not requirements:**
